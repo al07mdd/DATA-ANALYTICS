@@ -1,0 +1,36 @@
+📌 6. ФУНКЦИИ sorted() и reversed() 📌
+
+sorted_list = sorted(numbers)           # 📄 новая отсортированная копия
+reversed_list = list(reversed(numbers)) # 🔁 новая копия в обратном порядке
+
+✅✅ Сортировка списка чисел
+numbers = [3, 1, 4, 1, 5]
+sorted_numbers = sorted(numbers)
+print(sorted_numbers)
+print(numbers)
+
+✅ Сортировка строки
+letters = "bca"
+sorted_letters = sorted(letters)  # Вернет отсортированные символы по отдельности
+print(sorted_letters)
+print(letters)
+
+✅ Сортировка кортежа по длине строк в порядке убывания
+words = ("apple", "banana", "kiwi")
+sorted_words = sorted(words, key=len, reverse=True)
+print(sorted_words)
+print(words)
+
+✅✅ Разворот списка
+numbers = [3, 1, 4, 1, 5]
+reversed_numbers = reversed(numbers)  # возвращает не list, а list_reverseiterator
+print(reversed_numbers)
+list_reversed_numbers = list(reversed_numbers)  # чтобы увидеть элементы, нужно преобразовать в list
+print(list_reversed_numbers)
+
+✅ Разворот строки
+word = "hello"
+reversed_letters = reversed(word)
+print(reversed_letters)
+reversed_word = ''.join(reversed_letters)
+print(reversed_word)
