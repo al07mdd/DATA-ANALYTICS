@@ -1,0 +1,31 @@
+📌 3. ПОИСК И ПОДСЧЁТ 📌
+
+fruits = ["apple", "banana", "cherry", "banana"]
+print(fruits.index("banana"))       # 🔎 индекс первого вхождения
+print(fruits.index("banana", 2))    # 🔎 поиск с определённого индекса
+print(fruits.count("banana"))       # 🔢 количество вхождений
+
+✅✅ # поиск первого вхождения элемента "banana"
+fruits = ["apple", "banana", "cherry", "banana", "cherry"]
+banana_index = fruits.index("banana")
+print(banana_index)
+
+✅ поиск первого вхождения "banana", начиная с индекса 2
+banana_index = fruits.index("banana", 2)
+print(banana_index) 
+
+✅ поиск "cherry" в диапазоне индексов от 1 до 4 (не включая 4)
+cherry_index = fruits.index("cherry", 1, 4)
+print(cherry_index) 
+
+✅ поиск индекса элемента, которого нет в списке
+index = fruits.index("orange")  # вызовет ValueError
+
+✅✅ # подсчёт вхождений элемента
+fruits = ["apple", "banana", "cherry", "banana"]
+banana_count = fruits.count("banana")
+print(banana_count)
+
+✅ подсчёт элементов, которых нет в списке
+orange_count = fruits.count("orange")
+print(orange_count)
