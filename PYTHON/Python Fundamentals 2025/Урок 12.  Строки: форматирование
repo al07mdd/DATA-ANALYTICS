@@ -1,0 +1,105 @@
+🔸🔸🔸 УРОК 12. СТРОКИ: ФОРМАТИРОВАНИЕ 🔸🔸🔸
+
+📌 1. СПОСОБЫ ФОРМАТИРОВАНИЯ СТРОК
+
+🔸 C-style (%s, %d, %.2f) — старый стиль
+🔸 format() — универсальный способ
+🔸 f-строки — самый читаемый и современный
+
+📌 2. C-STYLE ФОРМАТИРОВАНИЕ
+
+✅num = 42
+text = "The number is %s." % num
+print(text)  # ➝ The number is 42.
+
+✅text = "42"
+formatted = "This will cause an error: %d" % text  # ❌ TypeError
+
+🧠 Важно: %s работает с любыми типами, %d — только с числами.
+
+📌 3. МЕТОД format()
+
+🔸"текст с {} внутри".format(значения)
+
+✅ Позиционные аргументы:
+name = "Alice"
+age = 30
+print("My name is {} and I am {} years old.".format(name, age))
+
+✅ Именованные аргументы:
+print("My name is {name} and I am {age} years old.".format(name="Bob", age=25))
+
+✅ Явные индексы:
+print("Her name is {0}. {0} loves Python.".format("Anna"))
+
+✅ Смешанный стиль:
+print("The {0} is {color}. The {1} is too.".format("sky", "sea", color="blue"))
+
+📌 4. F-СТРОКИ (f-strings)
+
+✅name = "Alice"
+age = 25
+print(f"My name is {name} and I am {age} years old.")
+
+✅С выражением:
+x, y = 10, 20
+print(f"The sum of {x} and {y} is {x + y}.")
+
+✅С функциями:
+text = "Python"
+print(f"The length is {len(text)} and upper is {text.upper()}.")
+
+✅Многострочный текст:
+name = "Charlie"
+print(f"""Name: {name}
+Age: 30""")
+
+🎯 Преимущества:
+- Лаконичность
+- Высокая читаемость
+- Быстродействие
+- Гибкость (любые выражения внутри {})
+
+📌 5. ФОРМАТИРОВАНИЕ ЧИСЕЛ
+
+✅ pi = 3.14159
+print(f"Pi is {pi:.2f}")                   # ➝ округление до 2 знаков
+print("Pi is {:.2f}".format(pi))           # ➝ то же самое
+
+✅ С разделителями тысяч:
+number = 1234567890
+print(f"{number:,}")                       # ➝ 1,234,567,890
+print("{:,}".format(number))
+
+📌 6. ВЫРАВНИВАНИЕ ТЕКСТА И ЧИСЕЛ
+
+✅ По правому краю:
+print(f"start_{'text':>10}_end")
+print("start_{:>10}_end".format("text"))
+
+✅По левому краю:
+print(f"start_{'text':<10}_end")
+
+✅По центру:
+print(f"start_{'text':^10}_end")
+
+✅Минимальная ширина поля для чисел:
+number = 40
+print(f"start_{number:5}_end")             # ➝ start_   40_end
+
+✅Заполнение символами:
+print(f"{40:0>5}")                         # ➝ 00040
+print(f"{'Python':_^10}")                  # ➝ __Python__
+
+📌 7. МЕТОДЫ ВЫРАВНИВАНИЯ СТРОК (str.ljust, str.rjust, str.center)
+✅
+text = "Python"
+
+print(text.ljust(15))           # ➝ 'Python         '
+print(text.ljust(15, '-'))      # ➝ 'Python---------'
+
+print(text.rjust(15))           # ➝ '         Python'
+print(text.rjust(15, '-'))      # ➝ '---------Python'
+
+print(text.center(15))          # ➝ '    Python    '
+print(text.center(15, '-'))     # ➝ '----Python----'
