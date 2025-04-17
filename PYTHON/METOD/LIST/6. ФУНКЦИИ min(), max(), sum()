@@ -1,0 +1,44 @@
+📌 6. ФУНКЦИИ min(), max(), sum() 📌
+
+numbers = [4, 1, 7, 2, 9]
+
+print(min(numbers))                 # ➖ минимум
+print(max(numbers))                 # ➕ максимум
+print(sum(numbers))                 # ➗ сумма
+
+words = ["apple", "banana", "kiwi"]
+print(min(words, key=len))         # 🔎 минимальная длина
+print(max(words, key=len))         # 🔎 максимальная длина
+
+✅✅ Поиск минимального/максимального значения в списке
+numbers = [4, 1, 7, 2, 9]
+print(min(numbers))
+print(max(numbers))
+
+✅ Поиск минимального/максимального значения среди отдельных аргументов
+print(min(3, 5, 2, 8))
+print(max(3, 5, 2, 8))
+
+✅ Поиск минимального/максимального символа
+chars = "Python"
+print(min(chars))
+print(max(chars))
+
+✅ Использование параметра key для поиска по длине строк
+words = ["apple", "banana", "kiwi", "grape"]
+print(min(words, key=len))
+print(max(words, key=len))
+
+✅✅ Сумма чисел в списке
+numbers = [4, 1, 7, 2, 9]
+total_sum = sum(numbers)
+print(total_sum) 
+
+✅ Сумма чисел в списке с начальным значением
+total_sum_with_start = sum(numbers, 1000)
+print(total_sum_with_start) 
+
+✅ Сумма чисел в кортеже
+numbers_tuple = (1, 2, 3)
+total_sum_tuple = sum(numbers_tuple)
+print(total_sum_tuple)
