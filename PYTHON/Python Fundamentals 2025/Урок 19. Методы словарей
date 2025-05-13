@@ -1,0 +1,139 @@
+🔸🔸🔸 УРОК 19. МЕТОДЫ СЛОВАРЕЙ  🔸🔸🔸
+
+📌 1. СОЗДАНИЕ СЛОВАРЯ С FROMKEYS -- fromkeys()
+✅
+
+```python
+keys = ["x", "y", "z"]
+my_dict = dict.fromkeys(keys)               # {'x': None, 'y': None, 'z': None}
+my_dict = dict.fromkeys([1, 2, 3], "default")  # {1: 'default', 2: 'default', 3: 'default'}
+```
+
+📅 Осторожно с изменяемыми значениями:
+
+```python
+shared = []
+d = dict.fromkeys(['a', 'b'], shared)
+d['a'].append(1)
+print(d)  # {'a': [1], 'b': [1]}
+```
+
+---
+
+📌 2. МЕТОД GET -- get()
+✅
+
+* Безопасный доступ по ключу
+* Не вызывает KeyError
+
+```python
+my_dict = {"name": "Alice", "age": 30}
+print(my_dict.get("name"))          # Alice
+print(my_dict.get("city", "Unknown"))  # Unknown
+```
+
+---
+
+📌 3. МЕТОД SETDEFAULT -- setdefault()
+✅
+
+* Возвращает значение по ключу, добавляет ключ, если его нет
+
+```python
+my_dict = {"name": "Alice", "age": 30}
+my_dict.setdefault("country")             # None, добавляется ключ
+my_dict.setdefault("city", "Unknown")     # "Unknown", добавляется ключ и значение
+```
+
+---
+
+📌 4. МЕТОДЫ KEYS, VALUES, ITEMS -- keys(), values(), items()
+✅
+
+```python
+my_dict = {"name": "Alice", "age": 30}
+print(list(my_dict.keys()))    # ['name', 'age']
+print(list(my_dict.values()))  # ['Alice', 30]
+print(list(my_dict.items()))   # [('name', 'Alice'), ('age', 30)]
+```
+
+✅ Итерация:
+
+```python
+for key in my_dict:
+    print(key)
+for value in my_dict.values():
+    print(value)
+for k, v in my_dict.items():
+    print(f"{k}: {v}")
+```
+
+---
+
+📌 5. ВЛОЖЕННЫЕ СТРУКТУРЫ В СЛОВАРЯХ
+✅
+
+```python
+school = {
+  "class1": {
+    "students": ["Alice", "Bob"],
+    "teacher": "Mrs. Smith"
+  },
+  "class2": {
+    "students": ["David", "Eva"],
+    "teacher": "Mr. Johnson"
+  }
+}
+print(school["class2"]["teacher"])  # Mr. Johnson
+```
+
+Изменение вложенных элементов:
+
+```python
+school["class1"]["students"].append("Daisy")
+del school["class2"]["teacher"]
+```
+
+---
+
+📌 6. КОПИРОВАНИЕ СЛОВАРЕЙ
+✅ Поверхностная копия:
+
+```python
+copy_dict = original.copy()
+```
+
+📅 Глубокая копия:
+
+```python
+import copy
+deep_dict = copy.deepcopy(original)
+```
+
+---
+
+📌 7. DICT COMPREHENSION
+✅
+
+```python
+numbers = [1, 2, 3, 4]
+squared = {n: n**2 for n in numbers}          # {1: 1, 2: 4, 3: 9, 4: 16}
+filtered = {k: v for k, v in d.items() if v > 0}
+```
+
+---
+
+📌 8. СРАВНЕНИЕ СЛОВАРЕЙ
+✅
+
+```python
+d1 = {"a": 1, "b": 2}
+d2 = {"b": 2, "a": 1}
+print(d1 == d2)  # True
+```
+
+🔹 Только == и != доступны. Порядок ключей не важен.
+
+---
+
+
