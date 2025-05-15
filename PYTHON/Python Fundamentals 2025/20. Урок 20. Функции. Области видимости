@@ -1,0 +1,88 @@
+🔸🔸🔸 ФУНКЦИИ И ОБЛАСТИ ВИДИМОСТИ В PYTHON 🔸🔸🔸
+
+📌 1. ОБЪЯВЛЕНИЕ И ВЫЗОВ ФУНКЦИЙ
+
+def greet(name):
+    print(f"Привет, {name}!")
+
+greet("Алиса")
+def — ключевое слово для объявления функции.
+
+name — параметр функции.
+Вызов через greet("Алиса").
+
+📌 2. RETURN — ВОЗВРАТ ЗНАЧЕНИЙ
+
+def add(a, b):
+    return a + b
+
+result = add(3, 5)
+print(result)  # 8
+return завершает функцию и возвращает результат.
+
+Если не указан — возвращается None.
+
+📌 3. ВИДЫ АРГУМЕНТОВ
+
+🔸# Позиционные аргументы
+def greet(name, age):
+    print(f"{name}, {age}")
+
+🔸# Именованные аргументы
+greet(age=25, name="Bob")
+
+🔸# Аргументы по умолчанию
+def greet(name, greeting="Hello"):
+    print(f"{greeting}, {name}!")
+
+greet("Alice")  # Hello, Alice!
+
+🔸# *args — упаковка позиционных аргументов
+def sum_all(*args):
+    return sum(args)
+
+🔸# **kwargs — упаковка именованных аргументов
+def show_info(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+        
+📌 4. ОБЛАСТИ ВИДИМОСТИ (LEGB)
+
+L — Local (локальная)
+
+E — Enclosing (вложенные функции)
+
+G — Global (вне функции)
+
+B — Built-in (встроенные функции)
+
+
+x = 10  # глобально
+
+✅
+def example():
+    x = 5  # локально
+    print(x)
+
+example()       # 5
+print(x)        # 10
+
+📌 5. GLOBAL — ДОСТУП К ГЛОБАЛЬНОЙ ПЕРЕМЕННОЙ
+
+✅
+count = 0
+
+def increment():
+    global count
+    count += 1
+
+increment()
+print(count)  # 1
+
+📌 6. PASS — ЗАГЛУШКА
+
+✅
+и
+def future_function():
+    pass  # заглушка, код добавим позже
+    
