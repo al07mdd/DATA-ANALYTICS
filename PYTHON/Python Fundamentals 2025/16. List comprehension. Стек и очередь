@@ -1,0 +1,82 @@
+🔸🔸🔸 УРОК 16. LIST COMPREHENSION. СТЕК И ОЧЕРЕДЬ 🔸🔸🔸
+
+📌 LIST COMPREHENSION
+
+List comprehension — компактный способ создания списков на основе существующих итерируемых объектов.
+
+📍 Синтаксис:
+new_list = [expression for item in iterable]
+
+✅
+numbers = [1, 2, 3, 4]
+squares = [x ** 2 for x in numbers]  # [1, 4, 9, 16]
+
+
+📌 С УСЛОВИЕМ IF
+
+📍Синтаксис:
+[expression for item in iterable if condition]
+
+✅
+even = [x for x in range(10) if x % 2 == 0]
+
+
+📌 С УСЛОВИЕМ IF-ELSE
+
+📍Синтаксис:
+[expr1 if condition else expr2 for item in iterable]
+
+✅
+numbers = [1, 2, 3, 4]
+res = [x if x % 2 == 0 else -1 for x in numbers]  # [-1, 2, -1, 4]
+
+
+📌 С ВЛОЖЕННЫМИ УСЛОВИЯМИ
+
+words = ["hi", "apple", "banana", "cat"]
+result = [w if len(w) > 5 else ("medium" if len(w) >= 3 else "short") for w in words]
+
+
+📌 С ВЛОЖЕННЫМИ ЦИКЛАМИ
+
+pairs = [(x, y) for x in range(2) for y in range(3)]
+# [(0,0), (0,1), (0,2), (1,0), (1,1), (1,2)]
+
+✅ Пример: распаковка матрицы:
+
+matrix = [[1, 2], [3, 4]]
+flat = [num for row in matrix for num in row]
+
+
+📌 ФУНКЦИЯ ZIP()
+
+names = ["Alice", "Bob"]
+ages = [25, 30]
+zipped = list(zip(names, ages))  # [("Alice", 25), ("Bob", 30)]
+
+
+📌 СТЕК (STACK)
+
+📍 Принцип LIFO (последним пришёл — первым ушёл)
+stack = []
+stack.append(1)
+stack.append(2)
+stack.pop()  # 2
+
+
+📌 ОЧЕРЕДЬ (QUEUE)
+
+📍 Принцип FIFO (первым пришёл — первым ушёл)
+from collections import deque
+queue = deque()
+queue.append(1)
+queue.append(2)
+queue.popleft()  # 1
+
+
+📌 УСТОЙЧИВОСТЬ СОРТИРОВКИ
+
+📍 Сортировка считается устойчивой, если сохраняется порядок равных элементов.
+words = ["apple", "dog", "banana"]
+sorted_words = sorted(words, key=len)  # ['dog', 'apple', 'banana']
+
