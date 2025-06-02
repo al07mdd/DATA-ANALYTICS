@@ -1,0 +1,68 @@
+BaseException
+ ├── BaseExceptionGroup                      -- # Базовый класс для групп исключений (PEP 654)
+ ├── GeneratorExit                           -- # Завершение генератора
+ ├── KeyboardInterrupt                       -- # Прерывание с клавиатуры (например, Ctrl+C)
+ ├── SystemExit                              -- # Выход из программы через sys.exit()
+ └── Exception                               -- # Базовый класс для всех обычных исключений
+      ├── ArithmeticError                    -- # Ошибка при арифметических операциях
+      │    ├── FloatingPointError            -- # Ошибка при операциях с плавающей точкой
+      │    ├── OverflowError                 -- # Результат слишком большой для представления
+      │    └── ZeroDivisionError             -- # Ошибка деления на ноль!
+      ├── AssertionError                     -- # Нарушение assert-условия
+      ├── AttributeError                     -- # Отсутствие атрибута у объекта
+      ├── BufferError                        -- # Ошибка при работе с буфером
+      ├── EOFError                           -- # Неожиданный конец ввода (input()/readline())
+      ├── ExceptionGroup [BaseExceptionGroup]-- # Группа исключений (например, в asyncio)
+      ├── ImportError                        -- # Ошибка при импорте модуля
+      │    └── ModuleNotFoundError           -- # Модуль не найден
+      ├── LookupError                        -- # Ошибка при поиске в последовательности или словаре
+      │    ├── IndexError                    -- # Индекс вне диапазона!
+      │    └── KeyError                      -- # Ключ не найден в словаре
+      ├── MemoryError                        -- # Недостаточно памяти
+      ├── NameError                          -- # Переменная не определена
+      │    └── UnboundLocalError             -- # Локальная переменная используется до присваивания
+      ├── OSError                            -- # Ошибка ввода-вывода операционной системы
+      │    ├── BlockingIOError               -- # Операция блокировки на неблокирующем объекте
+      │    ├── ChildProcessError             -- # Ошибка в дочернем процессе
+      │    ├── ConnectionError               -- # Ошибка соединения
+      │    │    ├── BrokenPipeError          -- # Разрыв канала связи (например, pipe)
+      │    │    ├── ConnectionAbortedError   -- # Соединение прервано
+      │    │    ├── ConnectionRefusedError   -- # Соединение отклонено
+      │    │    └── ConnectionResetError     -- # Соединение сброшено
+      │    ├── FileExistsError               -- # Файл уже существует
+      │    ├── FileNotFoundError             -- # Файл не найден
+      │    ├── InterruptedError              -- # Системный вызов был прерван
+      │    ├── IsADirectoryError             -- # Ожидался файл, но передан каталог
+      │    ├── NotADirectoryError            -- # Ожидался каталог, но передан файл
+      │    ├── PermissionError               -- # Нет прав доступа
+      │    ├── ProcessLookupError            -- # Процесс не найден
+      │    └── TimeoutError                  -- # Время операции истекло
+      ├── ReferenceError                     -- # Слабая ссылка стала недействительной
+      ├── RuntimeError                       -- # Ошибка, не попадающая под другие категории
+      │    ├── NotImplementedError           -- # Метод не реализован
+      │    ├── PythonFinalizationError       -- # Ошибка при завершении интерпретатора
+      │    └── RecursionError                -- # Превышена глубина рекурсии
+      ├── StopAsyncIteration                 -- # Завершение асинхронного итератора
+      ├── StopIteration                      -- # Завершение итератора
+      ├── SyntaxError                        -- # Ошибка синтаксиса
+      │    └── IndentationError              -- # Ошибка отступов
+      │         └── TabError                 -- # Смешивание табов и пробелов
+      ├── SystemError                        -- # Внутренняя ошибка интерпретатора
+      ├── TypeError                          -- # Неверный тип аргумента
+      ├── ValueError                         -- # Некорректное значение!
+      │    └── UnicodeError                  -- # Ошибка при работе с Unicode
+      │         ├── UnicodeDecodeError       -- # Ошибка декодирования Unicode
+      │         ├── UnicodeEncodeError       -- # Ошибка кодирования Unicode
+      │         └── UnicodeTranslateError    -- # Ошибка преобразования Unicode
+      └── Warning                            -- # Базовый класс для всех предупреждений
+           ├── BytesWarning                  -- # Предупреждение о работе с байтами
+           ├── DeprecationWarning            -- # Устаревший код
+           ├── EncodingWarning               -- # Потенциальная ошибка кодировки
+           ├── FutureWarning                 -- # Поведение может измениться в будущем
+           ├── ImportWarning                 -- # Проблемы при импорте
+           ├── PendingDeprecationWarning     -- # Отложенное устаревание
+           ├── ResourceWarning               -- # Утечка ресурсов (например, не закрытый файл)
+           ├── RuntimeWarning                -- # Неожиданное поведение во время выполнения
+           ├── SyntaxWarning                 -- # Подозрительный синтаксис
+           ├── UnicodeWarning                -- # Ошибки Unicode без исключения
+           └── UserWarning                   -- # Пользовательское предупреждение
