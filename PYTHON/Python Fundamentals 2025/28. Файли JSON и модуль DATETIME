@@ -1,0 +1,144 @@
+🔸🔸🔸 УРОК 28. ФАЙЛЫ JSON И МОДУЛЬ DATETIME 🔸🔸🔸
+
+📌📌 JSON
+
+📌 Формат:
+JSON (JavaScript Object Notation) — текстовый формат для хранения и передачи данных. Представляет данные как пары ключ–значение и массивы.
+
+✅ Пример JSON-объекта:
+```json
+{
+  "name": "Alice",
+  "age": 25,
+  "is_student": false,
+  "courses": ["Math", "Physics"]
+}
+```
+
+📌 Где используется:
+
+* API
+* базы данных (например, MongoDB)
+* конфигурационные файлы
+* передача данных между frontend и backend
+
+📌📌 МОДУЛЬ `json`
+
+📌 Сериализация (Python → JSON):
+
+* `json.dumps(obj)` — преобразует объект в JSON-строку
+* `json.dump(obj, file)` — записывает объект в JSON-файл
+
+✅
+import json
+
+data = {"name": "Alice", "age": 25, "is_student": False}
+json_string = json.dumps(data)
+print(json_string)
+
+with open("data.json", "w") as file:
+    json.dump(data, file)
+```
+
+📌 Десериализация (JSON → Python):
+
+* `json.loads(json_str)` — строка JSON → объект
+* `json.load(file)` — JSON из файла → объект
+
+✅
+import json
+
+json_str = '{"name": "Alice", "age": 25, "is_student": false}'
+data = json.loads(json_str)
+print(data)
+
+with open("data.json", "r") as f:
+    data = json.load(f)
+print(data)
+```
+
+📌 Сравнение типов:
+
+| Python      | JSON    |
+| ----------- | ------- |
+| dict        | object  |
+| list, tuple | array   |
+| str         | string  |
+| int, float  | number  |
+| bool        | boolean |
+| None        | null    |
+
+✅ Кортежи преобразуются в список, множества не поддерживаются.
+
+📌 Форматирование JSON:
+
+* `indent=4` — отступы
+* `ensure_ascii=False` — неэкранированные юникод-символы
+* `sort_keys=True` — сортировка ключей
+
+✅
+json.dumps(data, indent=4, ensure_ascii=False, sort_keys=True)
+```
+
+📌 Ошибка `JSONDecodeError`:
+
+❌ возникает при ошибках в формате JSON (отсутствуют кавычки, запятые, скобки)
+
+✅
+try:
+    data = json.loads('{"name": "Alice"')
+except json.JSONDecodeError as e:
+    print(f"Ошибка: {e}")
+```
+
+
+📌📌 МОДУЛЬ `datetime`
+
+📌 Получение текущей даты и времени:
+✅
+from datetime import datetime
+now = datetime.now()
+print(now)
+```
+
+📌 Компоненты:
+✅
+print(now.year, now.month, now.day)
+```
+
+📌 Форматирование даты — `strftime()`:
+✅
+now.strftime("%d.%m.%Y %H:%M:%S")
+```
+
+📌 Коды форматов:
+
+* `%d` — день
+* `%m` — месяц
+* `%Y` — год
+* `%H:%M:%S` — часы, минуты, секунды
+
+📌 Преобразование строки в дату — `strptime()`:
+✅
+datetime.strptime("28|02|2025 14-30-00", "%d|%m|%Y %H-%M-%S")
+```
+
+📌 Сравнение и разница дат:
+✅
+d1 = datetime(2025, 2, 28)
+d2 = datetime(2025, 3, 5)
+delta = d2 - d1
+print(delta.days)
+```
+
+📌 `timedelta` для добавления дней:
+✅
+from datetime import timedelta
+deadline = start_date + timedelta(days=14)
+```
+        json.dump(filtered, file, indent=4, ensure_ascii=False)
+
+    print(f"Найдено записей: {len(filtered)}. Сохранено в 'filtered_low_scores.json'.")
+
+filter_low_scores(70, "01-01-2025", "31-03-2025")
+```
