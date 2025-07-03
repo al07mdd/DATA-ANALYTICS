@@ -77,9 +77,29 @@ book2 = Book("Brave New World", "Aldous Huxley")
 object_name.attribute
 
 ✅
-print(book1.title)
-book1.title = "Animal Farm"
-print(book1.title)
+class Book:
+    def __init__(self, title, author):
+        self.title = title
+        self.author = author
+
+book = Book("1984", "George Orwell")
+
+print(book.title)
+print(book.author)
+
+✅
+class Book:
+    def __init__(self, title, author):
+        self.title = title
+        self.author = author
+
+book = Book("1984", "George Orwell")
+
+print(book.title)  # старое имя
+print(book.author)
+
+book.title = "Animal Farm"  # изменение значения поля title
+print(book.title)  # измененное имя
 
 📌 МЕТОДЫ КЛАССА
 
