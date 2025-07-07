@@ -1,0 +1,169 @@
+📌 ТАБЛИЦА МАГИЧЕСКИХ МЕТОДОВ
+Метод	                Описание
+🔸__class__	            Ссылка на класс объекта.
+✅
+obj = 5
+print(obj.__class__)  # <class 'int'>
+
+🔸__delattr__	          Вызывается при удалении атрибута del obj.attr.
+✅
+class A:
+    def __delattr__(self, name):
+        print(f"Удаляется {name}")
+        object.__delattr__(self, name)
+
+🔸__dict__	            Словарь всех атрибутов объекта.
+✅
+class A:
+    def __init__(self):
+        self.x = 5
+a = A()
+print(a.__dict__)  # {'x': 5}
+
+🔸__dir__	              Список атрибутов при вызове dir(obj).
+✅
+class A:
+    def __dir__(self):
+        return ['custom', 'attributes']
+print(dir(A()))
+
+🔸__doc__	              Строка документации класса или функции.
+✅
+class A:
+    """Это документация класса A"""
+print(A.__doc__)
+
+🔸__eq__	              Оператор ==, сравнение объектов.
+✅
+class A:
+    def __eq__(self, other):
+        return True
+        
+🔸__firstlineno__	      Номер первой строки в объекте функции.
+✅
+def f():
+    pass
+print(f.__code__.co_firstlineno)
+
+🔸__format__	          Вызывается при использовании format() и f-строк.
+✅
+class A:
+    def __format__(self, format_spec):
+        return "Formatted A"
+print(f"{A():10}")
+
+🔸__ge__	              Оператор >=.
+✅
+class A:
+    def __ge__(self, other):
+        return True
+        
+🔸__getattribute__	    Вызывается при доступе к атрибутам объекта.
+✅
+class A:
+    def __getattribute__(self, name):
+        print(f"Доступ к {name}")
+        return super().__getattribute__(name)
+        
+🔸__getstate__	        Возвращает состояние объекта для сериализации (pickle).
+✅
+class A:
+    def __getstate__(self):
+        return self.__dict__
+        
+🔸__gt__	              Оператор >.
+✅
+class A:
+    def __gt__(self, other):
+        return True
+        
+🔸__hash__	            Возвращает хэш объекта для set, dict.
+✅
+class A:
+    def __hash__(self):
+        return 42
+        
+🔸__init__	            Инициализация объекта при создании.
+✅
+class A:
+    def __init__(self, x):
+        self.x = x
+        
+🔸__init_subclass__	    Вызывается при создании подкласса.
+✅
+class A:
+    def __init_subclass__(cls):
+        print(f"{cls} создан")
+class B(A):
+    pass
+    
+🔸__le__	              Оператор <=.
+✅
+class A:
+    def __le__(self, other):
+        return True
+        
+🔸__lt__	              Оператор <.
+✅
+class A:
+    def __lt__(self, other):
+        return True
+        
+🔸__module__	          Имя модуля, в котором определён класс.
+✅
+class A:
+    pass
+print(A.__module__)  # '__main__'
+
+🔸__ne__	              Оператор !=.
+✅
+class A:
+    def __ne__(self, other):
+        return True
+        
+🔸__new__	              Создание объекта перед вызовом __init__.
+✅
+class A:
+    def __new__(cls, *args, **kwargs):
+        instance = super().__new__(cls)
+        return instance
+      
+🔸__reduce__	          Поддержка сериализации (pickle).
+
+🔸__reduce_ex__	        Расширенная поддержка сериализации (pickle).
+
+🔸__repr__	            Строковое представление для разработчика, repr(obj).
+✅
+class A:
+    def __repr__(self):
+        return "A()"
+        
+🔸__setattr__	          Вызывается при присвоении атрибута obj.attr = val.
+✅
+class A:
+    def __setattr__(self, name, value):
+        print(f"{name} = {value}")
+        super().__setattr__(name, value)
+        
+🔸__sizeof__	          Размер объекта в байтах (sys.getsizeof).
+✅
+import sys
+print(sys.getsizeof(5))
+
+🔸__static_attributes__	Не стандартный, иногда используется анализаторами кода.
+
+🔸__str__	              Строковое представление для пользователя, print(obj), str(obj).
+✅
+class A:
+    def __str__(self):
+        return "Instance of 
+        
+🔸__subclasshook__	    Пользовательское поведение issubclass() (с ABC).
+✅
+from abc import ABCMeta
+class MyABC(metaclass=ABCMeta):
+    @classmethod
+    def __subclasshook__(cls, C):
+        return True
+        
+🔸__weakref__	          Поддержка слабых ссылок на объект.
