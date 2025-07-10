@@ -1,0 +1,17 @@
+calendar = 
+ADDCOLUMNS(
+CALENDAR(min('orders'[order_purchase_DATE]), max('orders'[order_purchase_DATE])),
+"День",FORMAT([Date], "DD.MM.YYYY"),
+"Неделя",FORMAT(MAX( DATE(YEAR([Date]),1,1), [Date]-WEEKDAY([Date],3) ),"DD.MMM") & "-" & FORMAT(MIN( DATE(YEAR([Date]),12,31), [Date]+7-WEEKDAY([Date],2) ),"DD.MMM"),
+"Месяц",FORMAT([Date], "MMMM YYYY"),
+"Год",YEAR([Date]),
+"День недели",FORMAT([Date], "DDDD"),
+"Месяц сортировка", FORMAT([Date], "YYYYMM"),
+"Номер недели",WEEKNUM([Date], 2),
+"Неделя сортировка",IF(LEN(WEEKNUM([Date], 2)) = 1, FORMAT(YEAR([Date]),"")&"0"&FORMAT(WEEKNUM([Date], 2),""), FORMAT(YEAR([Date]),"")&""&FORMAT(WEEKNUM([Date], 2),"")),
+"День сортировка", FORMAT([Date],"YYYYMMDD"),
+"Имя месяца", FORMAT([Date],"MMM"),
+"Месяц номер", MONTH([Date]),
+"Short Month EN", FORMAT([Date], "MMM", "en-US"),
+"Short Month DE", FORMAT([Date], "MMM", "de-DE")
+)
