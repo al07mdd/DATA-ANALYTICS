@@ -1,0 +1,55 @@
+🔸🔸🔸 УРОК 35. РАБОТА С СЕТЬЮ. API 🔸🔸🔸
+
+📌 ПРОТОКОЛ HTTP
+HTTP (HyperText Transfer Protocol) — протокол для передачи данных в Интернете.
+URL — адрес ресурса.
+DNS — система преобразования доменов в IP-адреса.
+
+Структура HTTP-запроса:
+🔸Метод: GET, POST, PUT, DELETE
+🔸URL ресурса
+🔸Заголовки (User-Agent, Content-Type)
+🔸Тело запроса (для POST)
+
+Структура HTTP-ответа:
+🔸Код состояния (200, 404, 500)
+🔸Заголовки ответа
+🔸Тело ответа (данные)
+
+📌 МОДУЛЬ REQUESTS
+Установка:
+✅
+pip install requests
+Импорт и GET-запрос:
+
+✅
+import requests
+
+response = requests.get("https://example.com")
+print(response.status_code)   # Код ответа
+print(response.headers)       # Заголовки
+print(response.text)          # Текст ответа
+Основные методы:
+
+.status_code
+
+.headers
+
+.text
+
+.json() – преобразует JSON-ответ в словарь
+
+GET-запрос с параметрами:
+✅
+params = {'course': 'Python', 'lang': 'ru'}
+response = requests.get('https://httpbin.org/get', params=params)
+print(response.json())
+
+🔸 Параметры добавляются в URL автоматически:
+https://httpbin.org/get?course=Python&lang=ru
+
+POST-запрос:
+✅
+data = {'name': 'example', 'job': 'tester'}
+response = requests.post('https://httpbin.org/post', json=data)
+print(response.json())
