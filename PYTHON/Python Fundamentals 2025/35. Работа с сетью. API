@@ -20,8 +20,8 @@ DNS — система преобразования доменов в IP-адр�
 Установка:
 ✅
 pip install requests
-Импорт и GET-запрос:
 
+🔸Импорт и GET-запрос:
 ✅
 import requests
 
@@ -53,3 +53,50 @@ POST-запрос:
 data = {'name': 'example', 'job': 'tester'}
 response = requests.post('https://httpbin.org/post', json=data)
 print(response.json())
+
+📌 РАБОТА С API
+
+API (Application Programming Interface) — интерфейс взаимодействия между программами.
+
+Что нужно для работы с API:
+🔸Изучить документацию API
+🔸Найти URL (endpoint) и обязательные параметры
+🔸Узнать формат ответа (обычно JSON)
+🔸Реализовать запрос с помощью requests
+🔸При обращении к API мы отправляем HTTP-запрос и получаем структурированный JSON-ответ.
+
+📌 ПРИМЕР API: RANDOM-DATA-API.COM
+
+Пример получения случайных пользователей:
+✅
+response = requests.get('https://random-data-api.com/api/v2/users?size=1')
+res = response.json()
+for key, value in res.items():
+    print(f"{key}: {value}")
+
+Список пользователей:
+✅
+params = {'size': 10}
+response = requests.get('https://random-data-api.com/api/v2/users', params=params)
+res = response.json()
+for person in res:
+    print(f"{person['last_name']:15} {person['first_name']:15} {person['email']}")
+
+📌 ПРИМЕР API: WEATHERAPI.COM
+
+Требуется регистрация и API-ключ.
+
+Пример получения текущей погоды:
+✅
+API_KEY = "ваш API-ключ"
+city = "Berlin"
+params = {'key': API_KEY, 'q': city}
+url = "http://api.weatherapi.com/v1/current.json"
+response = requests.get(url, params=params)
+data = response.json()
+
+print(f"Город: {data['location']['name']}")
+print(f"Время: {data['location']['localtime']}")
+print(f"Температура: {data['current']['temp_c']} C")
+print(f"Ощущается как: {data['current']['feelslike_c']} C")
+print(f"Влажность: {data['current']['humidity']} %")
