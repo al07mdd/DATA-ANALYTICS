@@ -1,0 +1,139 @@
+🔸🔸🔸 УРОК 38. MONGODB И PYTHON. МОДУЛИ 🔸🔸🔸
+
+📌📌 ПОДКЛЮЧЕНИЕ К MONGODB ИЗ PYTHON
+MongoDB — это документоориентированная база данных, работающая с данными в виде словарей (JSON-объектов). Для работы с ней в Python используется 
+библиотека pymongo.
+
+🔸Установка:
+✅
+pip install pymongo
+
+🔸Пример подключения:
+✅
+from pymongo import MongoClient
+
+client = MongoClient(
+    "mongodb://user:password@server/?authSource=database"
+)
+db = client["database"]       # выбор базы данных
+collection = db["collection"] # выбор коллекции
+
+🔸Проверка подключения:
+✅
+client.admin.command("ping")
+
+🔸Закрытие соединения:
+✅
+client.close()
+
+📌 ДОБАВЛЕНИЕ ДАННЫХ
+🔸 Добавить один документ:
+✅
+collection.insert_one({"name": "Notebook", "price": 5.99, "stock": 120})
+
+🔸 Добавить несколько документов:
+✅
+collection.insert_many([
+    {"name": "Pen", "price": 1.50, "stock": 300},
+    {"name": "Pencil", "price": 0.99, "stock": 500}
+])
+
+📌 ЧТЕНИЕ ДАННЫХ
+🔸 Получить один документ:
+✅
+doc = collection.find_one()
+
+🔸 Получить все документы:
+✅
+for doc in collection.find():
+    print(doc)
+
+🔸 Условие поиска:
+✅
+collection.find_one({"price": {"$lt": 5}})
+
+🔸 Проекция полей:
+✅
+for doc in collection.find({}, {"name": 1, "price": 1}):
+    print(doc)
+
+🔸 Сортировка, лимит, пропуск:
+✅
+collection.find().sort("price", -1).skip(1).limit(2)
+
+📌 ОБНОВЛЕНИЕ ДАННЫХ
+🔸 Обновить один документ:
+✅
+collection.update_one(
+    {"name": "Notebook"},
+    {"$set": {"price": 24.99}}
+)
+
+🔸 Обновить несколько документов:
+✅
+collection.update_many(
+    {},
+    {"$inc": {"price": 1}}
+)
+
+📌 УДАЛЕНИЕ ДАННЫХ
+🔸 Удалить один документ:
+✅
+collection.delete_one({"name": "Notebook"})
+
+🔸 Удалить несколько документов:
+✅
+collection.delete_many({"price": {"$lt": 2}})
+
+📌 ОБРАБОТКА ОШИБОК
+Пример обработки:
+✅
+from pymongo import errors
+
+try:
+    client.admin.command("ping")
+except errors.ConnectionFailure:
+    print("Ошибка подключения")
+except errors.OperationFailure:
+    print("Ошибка авторизации или запроса")
+
+Основные типы ошибок:
+🔸ConnectionFailure — ошибка подключения.
+🔸OperationFailure — ошибка запроса или авторизации.
+🔸DuplicateKeyError — дублирование ключа.
+🔸PyMongoError — базовое исключение pymongo.
+
+📌📌 МОДУЛИ В PYTHON 📌📌
+Модуль — это любой .py-файл с функциями, переменными или классами.
+
+Зачем нужны:
+🔸Разделение кода на логические части.
+🔸Повторное использование.
+🔸Упрощение структуры проекта.
+
+Типы модулей:
+🔸Встроенные (math, random).
+🔸Сторонние (pymongo).
+🔸Пользовательские (your_module.py).
+
+
+Пример пользовательского модуля:
+
+Файл math_utils.py:
+✅
+def average(numbers):
+    return sum(numbers) / len(numbers)
+
+def maximum(numbers):
+    return max(numbers)
+
+if __name__ == "__main__":
+    print("Запуск напрямую")
+
+Использование в другом файле:
+✅
+import math_utils
+print(math_utils.average([10, 20, 30]))
+Компиляция в .pyc (автоматически при импорте):
+
+Сохраняется в папку __pycache__/.
