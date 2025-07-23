@@ -62,6 +62,8 @@ db.collection.find({ $text: { $search: "garden" } });
 ```
 db.collection.find({ $text: { $search: "quiet garden" } });
 ```
+(вернёт документы, которые содержат ОТДЕЛЬНО "quiet" И/ИЛИ "garden")
+
 #### 3. Исключение слова: Найти документы, содержащие слово "garden", но не "quiet":
 ```
 db.collection.find({ $text: { $search: "garden -quiet" } });
@@ -70,6 +72,9 @@ db.collection.find({ $text: { $search: "garden -quiet" } });
 ```
 db.collection.find({ $text: { $search: "\"small garden\"" } });
 ```
+(вернёт документы, которые содержат ЦЕЛИКОМ ФРАЗУ "small garden")
+
+[Подробный пример](./theory_03__text_search_practice.md)
 
 ## 4. Хэш-индексы (Hashed Index)
 
@@ -157,12 +162,28 @@ db.collection.createIndex({ "$**": 1 });
 ```
 db.collection.createIndex({ location: "2d" });
 ```
+Пример `2D` инедкса (просто массив из 2-х значений):
+``` 
+{
+    location: [longitude, latitude]  // X, Y
+}
+```
 Индекс типа 2DSphere (с учётом сферичности земной поверхности):
 ```
 db.collection.createIndex({ location: "2dsphere" });
 ```
 Особенности:
 - Поддерживают запросы, такие как поиск ближайших точек, пересечения с геометрическими объектами и т. д.
+
+Пример `2dsphere` индекса:
+```
+{
+  "location": {
+    "type": "Point",
+    "coordinates": [longitude, latitude]
+  }
+}
+```
 
 ## 10. врЕменные индексы (TTL Index)
 
